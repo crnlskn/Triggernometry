@@ -697,6 +697,13 @@ namespace Triggernometry.Forms
             a.KeypressType = (Action.KeypressTypeEnum)cbxKeypressMethod.SelectedIndex;
             a.KeyPressCode = expKeypress.Expression;
             a.KeyPressWindow = expWindowTitle.Expression;
+
+            a.ButtplugType = (VibrateCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Vibrate : 0)
+                            | (RotateCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Rotate : 0)
+                            | (LinearCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Linear : 0);
+            a.ButtplugSettings = new Dictionary<string, double>();
+            a.ButtplugSettings.Add("VibrateIntensity", Double.Parse(IntensityTextBox.Text));
+            a.ButtplugSettings.Add("Stop", StopCmdCheckBox.Checked ? 1 : 0);
         }
 
         private void TestAction(bool liveValues)
@@ -1579,6 +1586,7 @@ namespace Triggernometry.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            // XXX: is "we cancel the even but stay connected" ok?
             ButtplugClient bpcl = plug.bpcl;
             if (null == bpcl)
             {
@@ -1586,18 +1594,25 @@ namespace Triggernometry.Forms
                 bpcl = new ButtplugClient("Triggernometry Buttplug Client", bpwsconn);
                 plug.bpcl = bpcl;
             }
+
             if (!bpcl.Connected)
             {
                 ButtplugClientConnectButton.Text = "Connecting...";
                 ButtplugClientConnectButton.Enabled = false;
                 ButtplugClientServerAddressTextBox.Enabled = false;
-                var connect = Task.Run(() => bpcl.ConnectAsync());
+                var connect = Task.Run(() => bpcl.ConnectAsync(plug.GetCancellationToken()));
+                // FIXME: don't block the UI thread, disable controls instead
                 connect.Wait();
                 if(bpcl.Connected)
                 {
                     ButtplugClientConnectButton.Text = "Disconnect";
                     ButtplugClientConnectButton.Enabled = true;
                     ButtplugClientServerAddressTextBox.Enabled = false;
+                    bpcl.DeviceAdded += delegate {
+                        plug.ButtplugDevices = new BindingList<String>(bpcl.Devices.Select(a => a.Name).ToList());
+                        ButtplugDeviceListBox.DataSource = plug.ButtplugDevices;
+                    };
+                    bpcl.DeviceRemoved += delegate { plug.ButtplugDevices = new BindingList<String>(bpcl.Devices.Select(a => a.Name).ToList()); };                  
                 }
             }
             else
@@ -1606,15 +1621,50 @@ namespace Triggernometry.Forms
                 ButtplugClientConnectButton.Enabled = false;
                 ButtplugClientServerAddressTextBox.Enabled = false;
                 var disco = Task.Run( () => bpcl.DisconnectAsync());
+                // FIXME: don't block the UI thread, disable controls instead
                 disco.Wait();
                 if (!bpcl.Connected)
                 {
                     ButtplugClientConnectButton.Text = "Connect";
                     ButtplugClientConnectButton.Enabled = true;
                     ButtplugClientServerAddressTextBox.Enabled = true;
+                    if (!plug.ButtplugDeviceScanTask.IsCompleted)
+                    {
+                        plug.ButtplugDeviceScanTask.Wait();
+                        plug.ButtplugDeviceScanTask.Dispose();
+                    }
                 }
             }
 
+        }
+
+        private void VibrateCmdCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(((CheckBox)sender).Checked)
+            {
+                IntensityLabel.Visible = true;
+                IntensityTextBox.Visible = true;
+            }
+            else
+            {
+                IntensityLabel.Visible = false;
+                IntensityTextBox.Visible = false;
+            }
+        }
+
+        private void ButtplugScanButton_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            if(btn.Text.Equals("Scan"))
+            {
+
+                plug.ButtplugDeviceScanTask = plug.bpcl.StartScanningAsync(plug.GetCancellationToken());
+                btn.Text = "Stop";
+            }
+            else if(btn.Text.Equals("Stop")) {
+                plug.ButtplugDeviceScanTask = plug.bpcl.StopScanningAsync();
+                btn.Text = "Scan";
+            }
         }
     }
 

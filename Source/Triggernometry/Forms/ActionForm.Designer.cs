@@ -261,6 +261,21 @@
             this.lblWmsgTitle = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblWmsgWarning = new System.Windows.Forms.Label();
+            this.ButtplugClientTabPage = new System.Windows.Forms.TabPage();
+            this.ButtplugScanButton = new System.Windows.Forms.Button();
+            this.ButtplugDeviceListBox = new System.Windows.Forms.ListBox();
+            this.ButtplugClientConnectButton = new System.Windows.Forms.Button();
+            this.ButtplugClientServerAddressLabel = new System.Windows.Forms.Label();
+            this.ButtplugClientServerAddressTextBox = new System.Windows.Forms.TextBox();
+            this.ButtplugEvent = new System.Windows.Forms.TabPage();
+            this.IntensityLabel = new System.Windows.Forms.Label();
+            this.IntensityTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.StopCmdCheckBox = new System.Windows.Forms.CheckBox();
+            this.VibrateCmdCheckBox = new System.Windows.Forms.CheckBox();
+            this.RotateCmdCheckBox = new System.Windows.Forms.CheckBox();
+            this.LinearCmdCheckBox = new System.Windows.Forms.CheckBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -295,10 +310,9 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblReadOnly = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.ButtplugClientTabPage = new System.Windows.Forms.TabPage();
-            this.ButtplugClientServerAddressTextBox = new System.Windows.Forms.TextBox();
-            this.ButtplugClientServerAddressLabel = new System.Windows.Forms.Label();
-            this.ButtplugClientConnectButton = new System.Windows.Forms.Button();
+            this.pluginBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pluginBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.pluginBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.grpGeneralSettings.SuspendLayout();
             this.tbcActionSettings.SuspendLayout();
@@ -342,6 +356,8 @@
             this.tabWindowMessage.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
             this.panel7.SuspendLayout();
+            this.ButtplugClientTabPage.SuspendLayout();
+            this.ButtplugEvent.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tbcAction.SuspendLayout();
@@ -353,7 +369,9 @@
             this.tabDebugging.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.ButtplugClientTabPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pluginBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pluginBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pluginBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -414,7 +432,8 @@
             "OBS remote control operation",
             "Generic JSON operation",
             "Send window message",
-            "Buttplug Client"});
+            "Buttplug Client",
+            "Buttplug Event"});
             this.cbxActionType.Location = new System.Drawing.Point(69, 3);
             this.cbxActionType.Name = "cbxActionType";
             this.cbxActionType.Size = new System.Drawing.Size(472, 21);
@@ -465,6 +484,7 @@
             this.tbcActionSettings.Controls.Add(this.tabGenericJson);
             this.tbcActionSettings.Controls.Add(this.tabWindowMessage);
             this.tbcActionSettings.Controls.Add(this.ButtplugClientTabPage);
+            this.tbcActionSettings.Controls.Add(this.ButtplugEvent);
             this.tbcActionSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcActionSettings.Location = new System.Drawing.Point(3, 3);
             this.tbcActionSettings.Margin = new System.Windows.Forms.Padding(0);
@@ -3563,6 +3583,163 @@
     ". Please be aware of the risk.";
             this.lblWmsgWarning.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ButtplugClientTabPage
+            // 
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugScanButton);
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugDeviceListBox);
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientConnectButton);
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientServerAddressLabel);
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientServerAddressTextBox);
+            this.ButtplugClientTabPage.Location = new System.Drawing.Point(4, 25);
+            this.ButtplugClientTabPage.Name = "ButtplugClientTabPage";
+            this.ButtplugClientTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ButtplugClientTabPage.Size = new System.Drawing.Size(542, 264);
+            this.ButtplugClientTabPage.TabIndex = 19;
+            this.ButtplugClientTabPage.Text = "Buttplug Client";
+            this.ButtplugClientTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ButtplugScanButton
+            // 
+            this.ButtplugScanButton.Location = new System.Drawing.Point(318, 8);
+            this.ButtplugScanButton.Name = "ButtplugScanButton";
+            this.ButtplugScanButton.Size = new System.Drawing.Size(75, 20);
+            this.ButtplugScanButton.TabIndex = 4;
+            this.ButtplugScanButton.Text = "Scan";
+            this.ButtplugScanButton.UseVisualStyleBackColor = true;
+            this.ButtplugScanButton.Click += new System.EventHandler(this.ButtplugScanButton_Click);
+            // 
+            // ButtplugDeviceListBox
+            // 
+            this.ButtplugDeviceListBox.FormattingEnabled = true;
+            this.ButtplugDeviceListBox.Location = new System.Drawing.Point(416, 6);
+            this.ButtplugDeviceListBox.Name = "ButtplugDeviceListBox";
+            this.ButtplugDeviceListBox.Size = new System.Drawing.Size(120, 95);
+            this.ButtplugDeviceListBox.TabIndex = 3;
+            // 
+            // ButtplugClientConnectButton
+            // 
+            this.ButtplugClientConnectButton.Location = new System.Drawing.Point(229, 8);
+            this.ButtplugClientConnectButton.Name = "ButtplugClientConnectButton";
+            this.ButtplugClientConnectButton.Size = new System.Drawing.Size(75, 20);
+            this.ButtplugClientConnectButton.TabIndex = 2;
+            this.ButtplugClientConnectButton.Text = "Connect";
+            this.ButtplugClientConnectButton.UseVisualStyleBackColor = true;
+            this.ButtplugClientConnectButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // ButtplugClientServerAddressLabel
+            // 
+            this.ButtplugClientServerAddressLabel.AutoSize = true;
+            this.ButtplugClientServerAddressLabel.Location = new System.Drawing.Point(8, 11);
+            this.ButtplugClientServerAddressLabel.Name = "ButtplugClientServerAddressLabel";
+            this.ButtplugClientServerAddressLabel.Size = new System.Drawing.Size(78, 13);
+            this.ButtplugClientServerAddressLabel.TabIndex = 1;
+            this.ButtplugClientServerAddressLabel.Text = "Server address";
+            // 
+            // ButtplugClientServerAddressTextBox
+            // 
+            this.ButtplugClientServerAddressTextBox.Location = new System.Drawing.Point(88, 8);
+            this.ButtplugClientServerAddressTextBox.Name = "ButtplugClientServerAddressTextBox";
+            this.ButtplugClientServerAddressTextBox.Size = new System.Drawing.Size(126, 20);
+            this.ButtplugClientServerAddressTextBox.TabIndex = 0;
+            this.ButtplugClientServerAddressTextBox.Text = "ws://localhost:12345";
+            this.ButtplugClientServerAddressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // ButtplugEvent
+            // 
+            this.ButtplugEvent.Controls.Add(this.IntensityLabel);
+            this.ButtplugEvent.Controls.Add(this.IntensityTextBox);
+            this.ButtplugEvent.Controls.Add(this.label1);
+            this.ButtplugEvent.Controls.Add(this.checkedListBox1);
+            this.ButtplugEvent.Controls.Add(this.StopCmdCheckBox);
+            this.ButtplugEvent.Controls.Add(this.VibrateCmdCheckBox);
+            this.ButtplugEvent.Controls.Add(this.RotateCmdCheckBox);
+            this.ButtplugEvent.Controls.Add(this.LinearCmdCheckBox);
+            this.ButtplugEvent.Location = new System.Drawing.Point(4, 25);
+            this.ButtplugEvent.Name = "ButtplugEvent";
+            this.ButtplugEvent.Padding = new System.Windows.Forms.Padding(3);
+            this.ButtplugEvent.Size = new System.Drawing.Size(542, 264);
+            this.ButtplugEvent.TabIndex = 20;
+            this.ButtplugEvent.Text = "Buttplug Event";
+            this.ButtplugEvent.UseVisualStyleBackColor = true;
+            // 
+            // IntensityLabel
+            // 
+            this.IntensityLabel.AutoSize = true;
+            this.IntensityLabel.Location = new System.Drawing.Point(358, 144);
+            this.IntensityLabel.Name = "IntensityLabel";
+            this.IntensityLabel.Size = new System.Drawing.Size(46, 13);
+            this.IntensityLabel.TabIndex = 7;
+            this.IntensityLabel.Text = "Intensity";
+            this.IntensityLabel.Visible = false;
+            // 
+            // IntensityTextBox
+            // 
+            this.IntensityTextBox.Location = new System.Drawing.Point(424, 141);
+            this.IntensityTextBox.Name = "IntensityTextBox";
+            this.IntensityTextBox.Size = new System.Drawing.Size(100, 20);
+            this.IntensityTextBox.TabIndex = 6;
+            this.IntensityTextBox.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Devices";
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(3, 31);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(143, 199);
+            this.checkedListBox1.TabIndex = 4;
+            // 
+            // StopCmdCheckBox
+            // 
+            this.StopCmdCheckBox.AutoSize = true;
+            this.StopCmdCheckBox.Location = new System.Drawing.Point(149, 207);
+            this.StopCmdCheckBox.Name = "StopCmdCheckBox";
+            this.StopCmdCheckBox.Size = new System.Drawing.Size(97, 17);
+            this.StopCmdCheckBox.TabIndex = 3;
+            this.StopCmdCheckBox.Text = "Stop command";
+            this.StopCmdCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // VibrateCmdCheckBox
+            // 
+            this.VibrateCmdCheckBox.AutoSize = true;
+            this.VibrateCmdCheckBox.Location = new System.Drawing.Point(149, 143);
+            this.VibrateCmdCheckBox.Name = "VibrateCmdCheckBox";
+            this.VibrateCmdCheckBox.Size = new System.Drawing.Size(109, 17);
+            this.VibrateCmdCheckBox.TabIndex = 2;
+            this.VibrateCmdCheckBox.Text = "Vibrate Command";
+            this.VibrateCmdCheckBox.UseVisualStyleBackColor = true;
+            this.VibrateCmdCheckBox.CheckedChanged += new System.EventHandler(this.VibrateCmdCheckBox_CheckedChanged);
+            // 
+            // RotateCmdCheckBox
+            // 
+            this.RotateCmdCheckBox.AutoSize = true;
+            this.RotateCmdCheckBox.Enabled = false;
+            this.RotateCmdCheckBox.Location = new System.Drawing.Point(149, 90);
+            this.RotateCmdCheckBox.Name = "RotateCmdCheckBox";
+            this.RotateCmdCheckBox.Size = new System.Drawing.Size(108, 17);
+            this.RotateCmdCheckBox.TabIndex = 1;
+            this.RotateCmdCheckBox.Text = "Rotate Command";
+            this.RotateCmdCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // LinearCmdCheckBox
+            // 
+            this.LinearCmdCheckBox.AutoSize = true;
+            this.LinearCmdCheckBox.Enabled = false;
+            this.LinearCmdCheckBox.Location = new System.Drawing.Point(149, 37);
+            this.LinearCmdCheckBox.Name = "LinearCmdCheckBox";
+            this.LinearCmdCheckBox.Size = new System.Drawing.Size(104, 17);
+            this.LinearCmdCheckBox.TabIndex = 0;
+            this.LinearCmdCheckBox.Text = "Linear command";
+            this.LinearCmdCheckBox.UseVisualStyleBackColor = true;
+            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -3941,46 +4118,17 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // ButtplugClientTabPage
+            // pluginBindingSource
             // 
-            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientConnectButton);
-            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientServerAddressLabel);
-            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientServerAddressTextBox);
-            this.ButtplugClientTabPage.Location = new System.Drawing.Point(4, 25);
-            this.ButtplugClientTabPage.Name = "ButtplugClientTabPage";
-            this.ButtplugClientTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ButtplugClientTabPage.Size = new System.Drawing.Size(542, 264);
-            this.ButtplugClientTabPage.TabIndex = 19;
-            this.ButtplugClientTabPage.Text = "Buttplug Client";
-            this.ButtplugClientTabPage.UseVisualStyleBackColor = true;
+            this.pluginBindingSource.DataSource = typeof(Triggernometry.Plugin);
             // 
-            // ButtplugClientServerAddressTextBox
+            // pluginBindingSource1
             // 
-            this.ButtplugClientServerAddressTextBox.Location = new System.Drawing.Point(139, 25);
-            this.ButtplugClientServerAddressTextBox.Name = "ButtplugClientServerAddressTextBox";
-            this.ButtplugClientServerAddressTextBox.Size = new System.Drawing.Size(126, 20);
-            this.ButtplugClientServerAddressTextBox.TabIndex = 0;
-            this.ButtplugClientServerAddressTextBox.Text = "ws://localhost:12345";
-            this.ButtplugClientServerAddressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.pluginBindingSource1.DataSource = typeof(Triggernometry.Plugin);
             // 
-            // ButtplugClientServerAddressLabel
+            // pluginBindingSource2
             // 
-            this.ButtplugClientServerAddressLabel.AutoSize = true;
-            this.ButtplugClientServerAddressLabel.Location = new System.Drawing.Point(34, 28);
-            this.ButtplugClientServerAddressLabel.Name = "ButtplugClientServerAddressLabel";
-            this.ButtplugClientServerAddressLabel.Size = new System.Drawing.Size(78, 13);
-            this.ButtplugClientServerAddressLabel.TabIndex = 1;
-            this.ButtplugClientServerAddressLabel.Text = "Server address";
-            // 
-            // ButtplugClientConnectButton
-            // 
-            this.ButtplugClientConnectButton.Location = new System.Drawing.Point(315, 21);
-            this.ButtplugClientConnectButton.Name = "ButtplugClientConnectButton";
-            this.ButtplugClientConnectButton.Size = new System.Drawing.Size(75, 23);
-            this.ButtplugClientConnectButton.TabIndex = 2;
-            this.ButtplugClientConnectButton.Text = "Connect";
-            this.ButtplugClientConnectButton.UseVisualStyleBackColor = true;
-            this.ButtplugClientConnectButton.Click += new System.EventHandler(this.button1_Click_1);
+            this.pluginBindingSource2.DataSource = typeof(Triggernometry.Plugin);
             // 
             // ActionForm
             // 
@@ -4082,6 +4230,10 @@
             this.tableLayoutPanel19.ResumeLayout(false);
             this.tableLayoutPanel19.PerformLayout();
             this.panel7.ResumeLayout(false);
+            this.ButtplugClientTabPage.ResumeLayout(false);
+            this.ButtplugClientTabPage.PerformLayout();
+            this.ButtplugEvent.ResumeLayout(false);
+            this.ButtplugEvent.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -4100,8 +4252,9 @@
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
             this.panel8.ResumeLayout(false);
-            this.ButtplugClientTabPage.ResumeLayout(false);
-            this.ButtplugClientTabPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pluginBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pluginBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pluginBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4378,5 +4531,19 @@
         private System.Windows.Forms.Button ButtplugClientConnectButton;
         private System.Windows.Forms.Label ButtplugClientServerAddressLabel;
         private System.Windows.Forms.TextBox ButtplugClientServerAddressTextBox;
+        private System.Windows.Forms.TabPage ButtplugEvent;
+        private System.Windows.Forms.CheckBox StopCmdCheckBox;
+        private System.Windows.Forms.CheckBox VibrateCmdCheckBox;
+        private System.Windows.Forms.CheckBox RotateCmdCheckBox;
+        private System.Windows.Forms.CheckBox LinearCmdCheckBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label IntensityLabel;
+        private System.Windows.Forms.TextBox IntensityTextBox;
+        private System.Windows.Forms.Button ButtplugScanButton;
+        private System.Windows.Forms.ListBox ButtplugDeviceListBox;
+        private System.Windows.Forms.BindingSource pluginBindingSource;
+        private System.Windows.Forms.BindingSource pluginBindingSource1;
+        private System.Windows.Forms.BindingSource pluginBindingSource2;
     }
 }

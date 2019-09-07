@@ -19,6 +19,7 @@ using System.Net;
 using System.IO;
 using Microsoft.CSharp;
 using Microsoft.VisualBasic;
+using Buttplug.Core.Messages;
 
 namespace Triggernometry
 {
@@ -55,8 +56,23 @@ namespace Triggernometry
             ObsControl,
             GenericJson,
             WindowMessage,
-            ButtplugClientTabPage
+            ButtplugClientTabPage,
+            ButtplugEvent
         }
+
+        [FlagsAttribute]
+        public enum ButtplugTypesEnum
+        {
+            Linear,
+            Rotate,
+            Vibrate
+        }
+
+        [XmlAttribute]
+        public ButtplugTypesEnum ButtplugType { get; set; }
+
+        [XmlAttribute]
+        public Dictionary<String, Double> ButtplugSettings { get; set; }
 
         public enum VariableOpEnum
         {
@@ -3210,6 +3226,52 @@ namespace Triggernometry
                             Plugin.WindowsUtils.SendMessageToWindow(window, (ushort)code, wparam, lparam);
                         }
                         break;
+                    case ActionTypeEnum.ButtplugClientTabPage:
+                        {
+                            String msg = "Firing Buttplug client event. This does nothing, on purpose.";
+                            if (_LogProcess == true)
+                            {
+                                ctx.plug.LogLineQueuer(ctx.EvaluateStringExpression(
+                                    ActionContextLogger, ctx, msg), 
+                                    "", LogEvent.SourceEnum.Log);
+                            }
+                            else
+                            {
+                                AddToLog(ctx, Plugin.DebugLevelEnum.Error, ctx.EvaluateStringExpression(ActionContextLogger, ctx, msg));
+                            }
+                            break;
+                        }
+                    case ActionTypeEnum.ButtplugEvent:
+                        {
+                            if(null == ctx.plug.bpcl)
+                            {
+                                // not added
+                            }
+                            if(!ctx.plug.bpcl.Connected)
+                            {
+                                // not connected
+                            }
+                            else
+                            {
+                                if (ButtplugType.HasFlag(ButtplugTypesEnum.Vibrate))
+                                {
+                                    foreach (var dev in ctx.plug.bpcl.Devices)
+                                    {
+                                        // XXX: figure out the AllowedMessages stuff?
+                                        dev.SendVibrateCmd(ButtplugSettings["VibrateIntensity"]);
+                                    }
+                                }
+                                if(ButtplugSettings["off"] != 0)
+                                {
+                                    foreach (var dev in ctx.plug.bpcl.Devices)
+                                    {
+                                        // XXX: figure out the AllowedMessages stuff?
+                                        dev.SendVibrateCmd(0);
+                                    }
+                                }
+                            }
+                            break;
+                        }
                 }
             }
 			catch (Exception ex)

@@ -21,6 +21,7 @@ using System.Security.Principal;
 using System.Web.Script.Serialization;
 using System.Runtime.InteropServices;
 using Buttplug.Client;
+using System.ComponentModel;
 
 /*
  * Triggernometry II: The Triggering
@@ -171,6 +172,8 @@ namespace Triggernometry
         internal CancellationTokenSource cts = null;
         internal object ctslock = new object();
         internal int MinX = int.MaxValue, MinY = int.MaxValue, MaxX = int.MinValue, MaxY = int.MinValue;
+        internal Task ButtplugDeviceScanTask;
+        public BindingList<String> ButtplugDevices = null;
 
         private bool _HideAllAuras = false;
         internal bool HideAllAuras
