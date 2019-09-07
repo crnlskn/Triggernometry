@@ -29,6 +29,8 @@
     <TranslationEntry Key="ActionForm/cbxActionType[Send keypresses to active window]" Translation="Send keypresses to active window" />
     <TranslationEntry Key="ActionForm/cbxActionType[Show message box]" Translation="Show message box" />
     <TranslationEntry Key="ActionForm/cbxActionType[System beep]" Translation="System beep" />
+    <TranslationEntry Key="ActionForm/cbxActionType[Buttplug Client]" Translation="Buttplug Client" />
+    <TranslationEntry Key="ActionForm/cbxActionType[Buttplug Event]" Translation="Buttplug Event" />
     <TranslationEntry Key="ActionForm/cbxActionType[Text aura operation]" Translation="Text aura operation" />
     <TranslationEntry Key="ActionForm/cbxActionType[Trigger operation]" Translation="Trigger operation" />
     <TranslationEntry Key="ActionForm/cbxActionType[Use text-to-speech]" Translation="Use text-to-speech" />

@@ -270,8 +270,6 @@
             this.ButtplugEvent = new System.Windows.Forms.TabPage();
             this.IntensityLabel = new System.Windows.Forms.Label();
             this.IntensityTextBox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.StopCmdCheckBox = new System.Windows.Forms.CheckBox();
             this.VibrateCmdCheckBox = new System.Windows.Forms.CheckBox();
             this.RotateCmdCheckBox = new System.Windows.Forms.CheckBox();
@@ -3648,8 +3646,6 @@
             // 
             this.ButtplugEvent.Controls.Add(this.IntensityLabel);
             this.ButtplugEvent.Controls.Add(this.IntensityTextBox);
-            this.ButtplugEvent.Controls.Add(this.label1);
-            this.ButtplugEvent.Controls.Add(this.checkedListBox1);
             this.ButtplugEvent.Controls.Add(this.StopCmdCheckBox);
             this.ButtplugEvent.Controls.Add(this.VibrateCmdCheckBox);
             this.ButtplugEvent.Controls.Add(this.RotateCmdCheckBox);
@@ -3665,7 +3661,7 @@
             // IntensityLabel
             // 
             this.IntensityLabel.AutoSize = true;
-            this.IntensityLabel.Location = new System.Drawing.Point(358, 144);
+            this.IntensityLabel.Location = new System.Drawing.Point(188, 140);
             this.IntensityLabel.Name = "IntensityLabel";
             this.IntensityLabel.Size = new System.Drawing.Size(46, 13);
             this.IntensityLabel.TabIndex = 7;
@@ -3674,33 +3670,16 @@
             // 
             // IntensityTextBox
             // 
-            this.IntensityTextBox.Location = new System.Drawing.Point(424, 141);
+            this.IntensityTextBox.Location = new System.Drawing.Point(240, 137);
             this.IntensityTextBox.Name = "IntensityTextBox";
             this.IntensityTextBox.Size = new System.Drawing.Size(100, 20);
             this.IntensityTextBox.TabIndex = 6;
             this.IntensityTextBox.Visible = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Devices";
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(3, 31);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(143, 199);
-            this.checkedListBox1.TabIndex = 4;
-            // 
             // StopCmdCheckBox
             // 
             this.StopCmdCheckBox.AutoSize = true;
-            this.StopCmdCheckBox.Location = new System.Drawing.Point(149, 207);
+            this.StopCmdCheckBox.Location = new System.Drawing.Point(29, 203);
             this.StopCmdCheckBox.Name = "StopCmdCheckBox";
             this.StopCmdCheckBox.Size = new System.Drawing.Size(97, 17);
             this.StopCmdCheckBox.TabIndex = 3;
@@ -3710,7 +3689,7 @@
             // VibrateCmdCheckBox
             // 
             this.VibrateCmdCheckBox.AutoSize = true;
-            this.VibrateCmdCheckBox.Location = new System.Drawing.Point(149, 143);
+            this.VibrateCmdCheckBox.Location = new System.Drawing.Point(29, 139);
             this.VibrateCmdCheckBox.Name = "VibrateCmdCheckBox";
             this.VibrateCmdCheckBox.Size = new System.Drawing.Size(109, 17);
             this.VibrateCmdCheckBox.TabIndex = 2;
@@ -3722,7 +3701,7 @@
             // 
             this.RotateCmdCheckBox.AutoSize = true;
             this.RotateCmdCheckBox.Enabled = false;
-            this.RotateCmdCheckBox.Location = new System.Drawing.Point(149, 90);
+            this.RotateCmdCheckBox.Location = new System.Drawing.Point(29, 86);
             this.RotateCmdCheckBox.Name = "RotateCmdCheckBox";
             this.RotateCmdCheckBox.Size = new System.Drawing.Size(108, 17);
             this.RotateCmdCheckBox.TabIndex = 1;
@@ -3733,7 +3712,7 @@
             // 
             this.LinearCmdCheckBox.AutoSize = true;
             this.LinearCmdCheckBox.Enabled = false;
-            this.LinearCmdCheckBox.Location = new System.Drawing.Point(149, 37);
+            this.LinearCmdCheckBox.Location = new System.Drawing.Point(29, 33);
             this.LinearCmdCheckBox.Name = "LinearCmdCheckBox";
             this.LinearCmdCheckBox.Size = new System.Drawing.Size(104, 17);
             this.LinearCmdCheckBox.TabIndex = 0;
@@ -4536,8 +4515,6 @@
         private System.Windows.Forms.CheckBox VibrateCmdCheckBox;
         private System.Windows.Forms.CheckBox RotateCmdCheckBox;
         private System.Windows.Forms.CheckBox LinearCmdCheckBox;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label IntensityLabel;
         private System.Windows.Forms.TextBox IntensityTextBox;
         private System.Windows.Forms.Button ButtplugScanButton;

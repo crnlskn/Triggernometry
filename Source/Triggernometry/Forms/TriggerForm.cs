@@ -337,6 +337,15 @@ namespace Triggernometry.Forms
             {
                 Action a = Actions[dgvActions.SelectedRows[0].Index];
                 af.plug = plug;
+                af.fillButtplugFromAction(a);
+                /*
+            a.ButtplugType = (VibrateCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Vibrate : 0)
+                            | (RotateCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Rotate : 0)
+                            | (LinearCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Linear : 0);
+            a.ButtplugSettings = new Dictionary<string, double>();
+            a.ButtplugSettings.Add("VibrateIntensity", Double.Parse(IntensityTextBox.Text));
+            a.ButtplugSettings.Add("Stop", StopCmdCheckBox.Checked ? 1 : 0);                  
+                 */
                 af.wmp = wmp;
                 af.trvTrigger.ImageList = imgs;
                 af.trvTrigger.Nodes.Add((TreeNode)trv.Nodes[0].Clone());
@@ -357,7 +366,7 @@ namespace Triggernometry.Forms
                 {
                     af.SettingsToAction(a);
                     dgvActions.Refresh();
-                }
+                }               
             }
         }
 

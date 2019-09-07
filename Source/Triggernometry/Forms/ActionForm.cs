@@ -515,6 +515,15 @@ namespace Triggernometry.Forms
             }
         }
 
+        internal void fillButtplugFromAction(Action a)
+        {
+            VibrateCmdCheckBox.Checked = a.ButtplugType.HasFlag(Action.ButtplugTypesEnum.Vibrate);
+            if (a.ButtplugSettings.Keys.Contains("VibrateIntensity")) {
+                IntensityTextBox.Text = a.ButtplugSettings["VibrateIntensity"].ToString();
+            }
+            StopCmdCheckBox.Checked = a.ButtplugSettings.Keys.Contains("off");
+        }
+
         internal void SettingsToAction(Action a)
         {
             a.ActionType = (Action.ActionTypeEnum)cbxActionType.SelectedIndex;
@@ -702,7 +711,7 @@ namespace Triggernometry.Forms
                             | (RotateCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Rotate : 0)
                             | (LinearCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Linear : 0);
             a.ButtplugSettings = new Dictionary<string, double>();
-            a.ButtplugSettings.Add("VibrateIntensity", Double.Parse(IntensityTextBox.Text));
+            a.ButtplugSettings.Add("VibrateIntensity", Double.Parse(IntensityTextBox.Text ?? "0"));
             a.ButtplugSettings.Add("Stop", StopCmdCheckBox.Checked ? 1 : 0);
         }
 
