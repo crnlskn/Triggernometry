@@ -295,6 +295,10 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblReadOnly = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.ButtplugClientTabPage = new System.Windows.Forms.TabPage();
+            this.ButtplugClientServerAddressTextBox = new System.Windows.Forms.TextBox();
+            this.ButtplugClientServerAddressLabel = new System.Windows.Forms.Label();
+            this.ButtplugClientConnectButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.grpGeneralSettings.SuspendLayout();
             this.tbcActionSettings.SuspendLayout();
@@ -349,6 +353,7 @@
             this.tabDebugging.SuspendLayout();
             this.tableLayoutPanel16.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.ButtplugClientTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -408,7 +413,8 @@
             "List variable operation",
             "OBS remote control operation",
             "Generic JSON operation",
-            "Send window message"});
+            "Send window message",
+            "Buttplug Client"});
             this.cbxActionType.Location = new System.Drawing.Point(69, 3);
             this.cbxActionType.Name = "cbxActionType";
             this.cbxActionType.Size = new System.Drawing.Size(472, 21);
@@ -458,12 +464,13 @@
             this.tbcActionSettings.Controls.Add(this.tabObsControl);
             this.tbcActionSettings.Controls.Add(this.tabGenericJson);
             this.tbcActionSettings.Controls.Add(this.tabWindowMessage);
+            this.tbcActionSettings.Controls.Add(this.ButtplugClientTabPage);
             this.tbcActionSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcActionSettings.Location = new System.Drawing.Point(3, 3);
             this.tbcActionSettings.Margin = new System.Windows.Forms.Padding(0);
             this.tbcActionSettings.Name = "tbcActionSettings";
             this.tbcActionSettings.SelectedIndex = 0;
-            this.tbcActionSettings.Size = new System.Drawing.Size(550, 271);
+            this.tbcActionSettings.Size = new System.Drawing.Size(550, 293);
             this.tbcActionSettings.TabIndex = 0;
             // 
             // tabSystemBeep
@@ -473,7 +480,7 @@
             this.tabSystemBeep.Location = new System.Drawing.Point(4, 25);
             this.tabSystemBeep.Margin = new System.Windows.Forms.Padding(0);
             this.tabSystemBeep.Name = "tabSystemBeep";
-            this.tabSystemBeep.Size = new System.Drawing.Size(542, 242);
+            this.tabSystemBeep.Size = new System.Drawing.Size(542, 264);
             this.tabSystemBeep.TabIndex = 0;
             this.tabSystemBeep.Text = "System beep";
             this.tabSystemBeep.UseVisualStyleBackColor = true;
@@ -550,7 +557,7 @@
             this.tabPlaySoundFile.Location = new System.Drawing.Point(4, 25);
             this.tabPlaySoundFile.Margin = new System.Windows.Forms.Padding(0);
             this.tabPlaySoundFile.Name = "tabPlaySoundFile";
-            this.tabPlaySoundFile.Size = new System.Drawing.Size(542, 242);
+            this.tabPlaySoundFile.Size = new System.Drawing.Size(542, 264);
             this.tabPlaySoundFile.TabIndex = 1;
             this.tabPlaySoundFile.Text = "Play sound file";
             this.tabPlaySoundFile.UseVisualStyleBackColor = true;
@@ -673,7 +680,7 @@
             this.tabTextToSpeech.Controls.Add(this.tableLayoutPanel4);
             this.tabTextToSpeech.Location = new System.Drawing.Point(4, 25);
             this.tabTextToSpeech.Name = "tabTextToSpeech";
-            this.tabTextToSpeech.Size = new System.Drawing.Size(542, 242);
+            this.tabTextToSpeech.Size = new System.Drawing.Size(542, 264);
             this.tabTextToSpeech.TabIndex = 2;
             this.tabTextToSpeech.Text = "Use text-to-speech";
             this.tabTextToSpeech.UseVisualStyleBackColor = true;
@@ -808,7 +815,7 @@
             this.tabLaunchProcess.Controls.Add(this.panel4);
             this.tabLaunchProcess.Location = new System.Drawing.Point(4, 25);
             this.tabLaunchProcess.Name = "tabLaunchProcess";
-            this.tabLaunchProcess.Size = new System.Drawing.Size(542, 242);
+            this.tabLaunchProcess.Size = new System.Drawing.Size(542, 264);
             this.tabLaunchProcess.TabIndex = 3;
             this.tabLaunchProcess.Text = "Launch process";
             this.tabLaunchProcess.UseVisualStyleBackColor = true;
@@ -983,7 +990,7 @@
             this.tabTriggerOperation.Controls.Add(this.tableLayoutPanel10);
             this.tabTriggerOperation.Location = new System.Drawing.Point(4, 25);
             this.tabTriggerOperation.Name = "tabTriggerOperation";
-            this.tabTriggerOperation.Size = new System.Drawing.Size(542, 242);
+            this.tabTriggerOperation.Size = new System.Drawing.Size(542, 264);
             this.tabTriggerOperation.TabIndex = 4;
             this.tabTriggerOperation.Text = "Trigger operation";
             this.tabTriggerOperation.UseVisualStyleBackColor = true;
@@ -1015,7 +1022,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(542, 242);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(542, 264);
             this.tableLayoutPanel10.TabIndex = 7;
             // 
             // lblFiringOptions
@@ -1129,7 +1136,7 @@
             this.trvTrigger.Name = "trvTrigger";
             this.tableLayoutPanel10.SetRowSpan(this.trvTrigger, 2);
             this.trvTrigger.ShowNodeToolTips = true;
-            this.trvTrigger.Size = new System.Drawing.Size(429, 102);
+            this.trvTrigger.Size = new System.Drawing.Size(429, 124);
             this.trvTrigger.TabIndex = 22;
             this.trvTrigger.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvTrigger_BeforeCollapse);
             this.trvTrigger.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvTrigger_BeforeExpand);
@@ -1161,7 +1168,7 @@
             this.tabKeypress.Controls.Add(this.tableLayoutPanel6);
             this.tabKeypress.Location = new System.Drawing.Point(4, 25);
             this.tabKeypress.Name = "tabKeypress";
-            this.tabKeypress.Size = new System.Drawing.Size(542, 242);
+            this.tabKeypress.Size = new System.Drawing.Size(542, 264);
             this.tabKeypress.TabIndex = 5;
             this.tabKeypress.Text = "Keypress";
             this.tabKeypress.UseVisualStyleBackColor = true;
@@ -1199,14 +1206,14 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(525, 262);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(542, 262);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // btnKeycodesLink
             // 
             this.btnKeycodesLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnKeycodesLink.Image = ((System.Drawing.Image)(resources.GetObject("btnKeycodesLink.Image")));
-            this.btnKeycodesLink.Location = new System.Drawing.Point(485, 236);
+            this.btnKeycodesLink.Location = new System.Drawing.Point(502, 236);
             this.btnKeycodesLink.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.btnKeycodesLink.Name = "btnKeycodesLink";
             this.btnKeycodesLink.Size = new System.Drawing.Size(37, 26);
@@ -1220,7 +1227,7 @@
             this.txtKeyCodesLink.Location = new System.Drawing.Point(123, 239);
             this.txtKeyCodesLink.Name = "txtKeyCodesLink";
             this.txtKeyCodesLink.ReadOnly = true;
-            this.txtKeyCodesLink.Size = new System.Drawing.Size(359, 20);
+            this.txtKeyCodesLink.Size = new System.Drawing.Size(376, 20);
             this.txtKeyCodesLink.TabIndex = 28;
             this.txtKeyCodesLink.Text = "https://docs.microsoft.com/en-us/dotnet/api/system.windows.forms.keys";
             // 
@@ -1231,7 +1238,7 @@
             this.lblKeypressInfo.Location = new System.Drawing.Point(123, 177);
             this.lblKeypressInfo.Name = "lblKeypressInfo";
             this.lblKeypressInfo.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.lblKeypressInfo.Size = new System.Drawing.Size(390, 59);
+            this.lblKeypressInfo.Size = new System.Drawing.Size(404, 59);
             this.lblKeypressInfo.TabIndex = 27;
             this.lblKeypressInfo.Text = "The window message format can send one key at a time, and modifier keys such as S" +
     "hift are represented as additions to the original keycode. Keycode constants are" +
@@ -1247,7 +1254,7 @@
             this.expKeypress.Location = new System.Drawing.Point(123, 154);
             this.expKeypress.Name = "expKeypress";
             this.expKeypress.ReadOnly = false;
-            this.expKeypress.Size = new System.Drawing.Size(399, 20);
+            this.expKeypress.Size = new System.Drawing.Size(416, 20);
             this.expKeypress.TabIndex = 26;
             // 
             // expWindowTitle
@@ -1260,7 +1267,7 @@
             this.expWindowTitle.Location = new System.Drawing.Point(123, 128);
             this.expWindowTitle.Name = "expWindowTitle";
             this.expWindowTitle.ReadOnly = false;
-            this.expWindowTitle.Size = new System.Drawing.Size(399, 20);
+            this.expWindowTitle.Size = new System.Drawing.Size(416, 20);
             this.expWindowTitle.TabIndex = 25;
             // 
             // lblKeypress
@@ -1296,7 +1303,7 @@
             "Window message"});
             this.cbxKeypressMethod.Location = new System.Drawing.Point(123, 3);
             this.cbxKeypressMethod.Name = "cbxKeypressMethod";
-            this.cbxKeypressMethod.Size = new System.Drawing.Size(399, 21);
+            this.cbxKeypressMethod.Size = new System.Drawing.Size(416, 21);
             this.cbxKeypressMethod.TabIndex = 22;
             this.cbxKeypressMethod.SelectedIndexChanged += new System.EventHandler(this.cbxKeypressMethod_SelectedIndexChanged);
             // 
@@ -1315,7 +1322,7 @@
             // 
             this.btnSendKeysLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnSendKeysLink.Image = ((System.Drawing.Image)(resources.GetObject("btnSendKeysLink.Image")));
-            this.btnSendKeysLink.Location = new System.Drawing.Point(485, 99);
+            this.btnSendKeysLink.Location = new System.Drawing.Point(502, 99);
             this.btnSendKeysLink.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.btnSendKeysLink.Name = "btnSendKeysLink";
             this.btnSendKeysLink.Size = new System.Drawing.Size(37, 26);
@@ -1344,7 +1351,7 @@
             this.expKeypresses.Location = new System.Drawing.Point(123, 30);
             this.expKeypresses.Name = "expKeypresses";
             this.expKeypresses.ReadOnly = false;
-            this.expKeypresses.Size = new System.Drawing.Size(399, 20);
+            this.expKeypresses.Size = new System.Drawing.Size(416, 20);
             this.expKeypresses.TabIndex = 14;
             // 
             // lblKeypressesInfo
@@ -1354,7 +1361,7 @@
             this.lblKeypressesInfo.Location = new System.Drawing.Point(123, 53);
             this.lblKeypressesInfo.Name = "lblKeypressesInfo";
             this.lblKeypressesInfo.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.lblKeypressesInfo.Size = new System.Drawing.Size(391, 46);
+            this.lblKeypressesInfo.Size = new System.Drawing.Size(415, 46);
             this.lblKeypressesInfo.TabIndex = 15;
             this.lblKeypressesInfo.Text = "The SendKeys keypress format, including how to represent modifier keys such as Sh" +
     "ift, is described on this webpage:";
@@ -1365,7 +1372,7 @@
             this.txtSendKeysLink.Location = new System.Drawing.Point(123, 102);
             this.txtSendKeysLink.Name = "txtSendKeysLink";
             this.txtSendKeysLink.ReadOnly = true;
-            this.txtSendKeysLink.Size = new System.Drawing.Size(359, 20);
+            this.txtSendKeysLink.Size = new System.Drawing.Size(376, 20);
             this.txtSendKeysLink.TabIndex = 16;
             this.txtSendKeysLink.Text = "https://msdn.microsoft.com/en-us/library/system.windows.forms.sendkeys.send.aspx";
             // 
@@ -1376,7 +1383,7 @@
             this.tabScript.Controls.Add(this.panel5);
             this.tabScript.Location = new System.Drawing.Point(4, 25);
             this.tabScript.Name = "tabScript";
-            this.tabScript.Size = new System.Drawing.Size(542, 242);
+            this.tabScript.Size = new System.Drawing.Size(542, 264);
             this.tabScript.TabIndex = 6;
             this.tabScript.Text = "Script";
             this.tabScript.UseVisualStyleBackColor = true;
@@ -1506,7 +1513,7 @@
             this.tabMessageBox.Controls.Add(this.tableLayoutPanel8);
             this.tabMessageBox.Location = new System.Drawing.Point(4, 25);
             this.tabMessageBox.Name = "tabMessageBox";
-            this.tabMessageBox.Size = new System.Drawing.Size(542, 242);
+            this.tabMessageBox.Size = new System.Drawing.Size(542, 264);
             this.tabMessageBox.TabIndex = 7;
             this.tabMessageBox.Text = "MessageBox";
             this.tabMessageBox.UseVisualStyleBackColor = true;
@@ -1586,7 +1593,7 @@
             this.tabVariable.Controls.Add(this.tableLayoutPanel9);
             this.tabVariable.Location = new System.Drawing.Point(4, 25);
             this.tabVariable.Name = "tabVariable";
-            this.tabVariable.Size = new System.Drawing.Size(542, 242);
+            this.tabVariable.Size = new System.Drawing.Size(542, 264);
             this.tabVariable.TabIndex = 8;
             this.tabVariable.Text = "Variable";
             this.tabVariable.UseVisualStyleBackColor = true;
@@ -1695,7 +1702,7 @@
             this.tabImageAura.Controls.Add(this.tableLayoutPanel11);
             this.tabImageAura.Location = new System.Drawing.Point(4, 25);
             this.tabImageAura.Name = "tabImageAura";
-            this.tabImageAura.Size = new System.Drawing.Size(542, 242);
+            this.tabImageAura.Size = new System.Drawing.Size(542, 264);
             this.tabImageAura.TabIndex = 9;
             this.tabImageAura.Text = "Aura";
             this.tabImageAura.UseVisualStyleBackColor = true;
@@ -1707,7 +1714,7 @@
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 84F));
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.tableLayoutPanel11.Controls.Add(this.btnHide, 3, 1);
             this.tableLayoutPanel11.Controls.Add(this.cbxAuraDisplay, 1, 3);
             this.tableLayoutPanel11.Controls.Add(this.lblAuraDisplay, 0, 3);
@@ -2142,7 +2149,7 @@
             this.tabFolderOperation.Controls.Add(this.tableLayoutPanel12);
             this.tabFolderOperation.Location = new System.Drawing.Point(4, 25);
             this.tabFolderOperation.Name = "tabFolderOperation";
-            this.tabFolderOperation.Size = new System.Drawing.Size(542, 242);
+            this.tabFolderOperation.Size = new System.Drawing.Size(542, 264);
             this.tabFolderOperation.TabIndex = 10;
             this.tabFolderOperation.Text = "Folder";
             this.tabFolderOperation.UseVisualStyleBackColor = true;
@@ -2167,7 +2174,7 @@
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(542, 242);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(542, 264);
             this.tableLayoutPanel12.TabIndex = 8;
             // 
             // lblFolder
@@ -2217,7 +2224,7 @@
             this.trvFolder.Name = "trvFolder";
             this.tableLayoutPanel12.SetRowSpan(this.trvFolder, 2);
             this.trvFolder.ShowNodeToolTips = true;
-            this.trvFolder.Size = new System.Drawing.Size(477, 209);
+            this.trvFolder.Size = new System.Drawing.Size(477, 231);
             this.trvFolder.TabIndex = 22;
             this.trvFolder.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvFolder_BeforeCollapse);
             this.trvFolder.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.trvFolder_BeforeExpand);
@@ -2228,7 +2235,7 @@
             this.tabEndEncounter.Controls.Add(this.lblEndEncNoParams);
             this.tabEndEncounter.Location = new System.Drawing.Point(4, 25);
             this.tabEndEncounter.Name = "tabEndEncounter";
-            this.tabEndEncounter.Size = new System.Drawing.Size(542, 242);
+            this.tabEndEncounter.Size = new System.Drawing.Size(542, 264);
             this.tabEndEncounter.TabIndex = 11;
             this.tabEndEncounter.Text = "End";
             this.tabEndEncounter.UseVisualStyleBackColor = true;
@@ -2239,7 +2246,7 @@
             this.lblEndEncNoParams.Location = new System.Drawing.Point(0, 0);
             this.lblEndEncNoParams.Name = "lblEndEncNoParams";
             this.lblEndEncNoParams.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            this.lblEndEncNoParams.Size = new System.Drawing.Size(542, 242);
+            this.lblEndEncNoParams.Size = new System.Drawing.Size(542, 264);
             this.lblEndEncNoParams.TabIndex = 16;
             this.lblEndEncNoParams.Text = "This action has no configurable parameters.";
             this.lblEndEncNoParams.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2249,7 +2256,7 @@
             this.tabDiscordWebhook.Controls.Add(this.discordTableLayout);
             this.tabDiscordWebhook.Location = new System.Drawing.Point(4, 25);
             this.tabDiscordWebhook.Name = "tabDiscordWebhook";
-            this.tabDiscordWebhook.Size = new System.Drawing.Size(542, 242);
+            this.tabDiscordWebhook.Size = new System.Drawing.Size(542, 264);
             this.tabDiscordWebhook.TabIndex = 13;
             this.tabDiscordWebhook.Text = "Discord";
             this.tabDiscordWebhook.UseVisualStyleBackColor = true;
@@ -2341,7 +2348,7 @@
             this.tabTextAura.Controls.Add(this.tableLayoutPanel13);
             this.tabTextAura.Location = new System.Drawing.Point(4, 25);
             this.tabTextAura.Name = "tabTextAura";
-            this.tabTextAura.Size = new System.Drawing.Size(542, 242);
+            this.tabTextAura.Size = new System.Drawing.Size(542, 264);
             this.tabTextAura.TabIndex = 12;
             this.tabTextAura.Text = "TextAura";
             this.tabTextAura.UseVisualStyleBackColor = true;
@@ -2861,7 +2868,7 @@
             this.tabLogMessage.Controls.Add(this.tableLayoutPanel14);
             this.tabLogMessage.Location = new System.Drawing.Point(4, 25);
             this.tabLogMessage.Name = "tabLogMessage";
-            this.tabLogMessage.Size = new System.Drawing.Size(542, 242);
+            this.tabLogMessage.Size = new System.Drawing.Size(542, 264);
             this.tabLogMessage.TabIndex = 14;
             this.tabLogMessage.Text = "LogMessage";
             this.tabLogMessage.UseVisualStyleBackColor = true;
@@ -2926,7 +2933,7 @@
             this.tabListVariable.Controls.Add(this.tableLayoutPanel17);
             this.tabListVariable.Location = new System.Drawing.Point(4, 25);
             this.tabListVariable.Name = "tabListVariable";
-            this.tabListVariable.Size = new System.Drawing.Size(542, 242);
+            this.tabListVariable.Size = new System.Drawing.Size(542, 264);
             this.tabListVariable.TabIndex = 15;
             this.tabListVariable.Text = "ListVariable";
             this.tabListVariable.UseVisualStyleBackColor = true;
@@ -3129,7 +3136,7 @@
             this.tabObsControl.Controls.Add(this.tableLayoutPanel18);
             this.tabObsControl.Location = new System.Drawing.Point(4, 25);
             this.tabObsControl.Name = "tabObsControl";
-            this.tabObsControl.Size = new System.Drawing.Size(542, 242);
+            this.tabObsControl.Size = new System.Drawing.Size(542, 264);
             this.tabObsControl.TabIndex = 16;
             this.tabObsControl.Text = "OBS";
             this.tabObsControl.UseVisualStyleBackColor = true;
@@ -3288,7 +3295,7 @@
             this.tabGenericJson.Controls.Add(this.jsonTableLayout);
             this.tabGenericJson.Location = new System.Drawing.Point(4, 25);
             this.tabGenericJson.Name = "tabGenericJson";
-            this.tabGenericJson.Size = new System.Drawing.Size(542, 242);
+            this.tabGenericJson.Size = new System.Drawing.Size(542, 264);
             this.tabGenericJson.TabIndex = 17;
             this.tabGenericJson.Text = "JSON";
             this.tabGenericJson.UseVisualStyleBackColor = true;
@@ -3403,7 +3410,7 @@
             this.tabWindowMessage.Location = new System.Drawing.Point(4, 25);
             this.tabWindowMessage.Name = "tabWindowMessage";
             this.tabWindowMessage.Padding = new System.Windows.Forms.Padding(3);
-            this.tabWindowMessage.Size = new System.Drawing.Size(542, 242);
+            this.tabWindowMessage.Size = new System.Drawing.Size(542, 264);
             this.tabWindowMessage.TabIndex = 18;
             this.tabWindowMessage.Text = "Wmsg";
             this.tabWindowMessage.UseVisualStyleBackColor = true;
@@ -3934,6 +3941,47 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // ButtplugClientTabPage
+            // 
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientConnectButton);
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientServerAddressLabel);
+            this.ButtplugClientTabPage.Controls.Add(this.ButtplugClientServerAddressTextBox);
+            this.ButtplugClientTabPage.Location = new System.Drawing.Point(4, 25);
+            this.ButtplugClientTabPage.Name = "ButtplugClientTabPage";
+            this.ButtplugClientTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ButtplugClientTabPage.Size = new System.Drawing.Size(542, 264);
+            this.ButtplugClientTabPage.TabIndex = 19;
+            this.ButtplugClientTabPage.Text = "Buttplug Client";
+            this.ButtplugClientTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ButtplugClientServerAddressTextBox
+            // 
+            this.ButtplugClientServerAddressTextBox.Location = new System.Drawing.Point(139, 25);
+            this.ButtplugClientServerAddressTextBox.Name = "ButtplugClientServerAddressTextBox";
+            this.ButtplugClientServerAddressTextBox.Size = new System.Drawing.Size(126, 20);
+            this.ButtplugClientServerAddressTextBox.TabIndex = 0;
+            this.ButtplugClientServerAddressTextBox.Text = "ws://localhost:12345";
+            this.ButtplugClientServerAddressTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // ButtplugClientServerAddressLabel
+            // 
+            this.ButtplugClientServerAddressLabel.AutoSize = true;
+            this.ButtplugClientServerAddressLabel.Location = new System.Drawing.Point(34, 28);
+            this.ButtplugClientServerAddressLabel.Name = "ButtplugClientServerAddressLabel";
+            this.ButtplugClientServerAddressLabel.Size = new System.Drawing.Size(78, 13);
+            this.ButtplugClientServerAddressLabel.TabIndex = 1;
+            this.ButtplugClientServerAddressLabel.Text = "Server address";
+            // 
+            // ButtplugClientConnectButton
+            // 
+            this.ButtplugClientConnectButton.Location = new System.Drawing.Point(315, 21);
+            this.ButtplugClientConnectButton.Name = "ButtplugClientConnectButton";
+            this.ButtplugClientConnectButton.Size = new System.Drawing.Size(75, 23);
+            this.ButtplugClientConnectButton.TabIndex = 2;
+            this.ButtplugClientConnectButton.Text = "Connect";
+            this.ButtplugClientConnectButton.UseVisualStyleBackColor = true;
+            this.ButtplugClientConnectButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // ActionForm
             // 
             this.AcceptButton = this.btnOk;
@@ -4052,6 +4100,8 @@
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
             this.panel8.ResumeLayout(false);
+            this.ButtplugClientTabPage.ResumeLayout(false);
+            this.ButtplugClientTabPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -4324,5 +4374,9 @@
         private System.Windows.Forms.StatusStrip stsMouseHelp;
         private System.Windows.Forms.ToolStripStatusLabel tlsMouseLocation;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.TabPage ButtplugClientTabPage;
+        private System.Windows.Forms.Button ButtplugClientConnectButton;
+        private System.Windows.Forms.Label ButtplugClientServerAddressLabel;
+        private System.Windows.Forms.TextBox ButtplugClientServerAddressTextBox;
     }
 }

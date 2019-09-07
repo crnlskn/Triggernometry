@@ -20,6 +20,7 @@ using WMPLib;
 using System.Security.Principal;
 using System.Web.Script.Serialization;
 using System.Runtime.InteropServices;
+using Buttplug.Client;
 
 /*
  * Triggernometry II: The Triggering
@@ -47,6 +48,8 @@ namespace Triggernometry
             Verbose,
             Inherit
         }
+
+        internal ButtplugClient bpcl;
 
         internal class WindowsUtils
         {

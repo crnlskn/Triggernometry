@@ -54,7 +54,8 @@ namespace Triggernometry
             ListVariable,
             ObsControl,
             GenericJson,
-            WindowMessage
+            WindowMessage,
+            ButtplugClientTabPage
         }
 
         public enum VariableOpEnum

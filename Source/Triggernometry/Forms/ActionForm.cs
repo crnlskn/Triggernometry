@@ -11,6 +11,8 @@ using System.Speech.Synthesis;
 using System.Xml.Serialization;
 using System.IO;
 using System.Globalization;
+using Buttplug.Client;
+using Buttplug.Client.Connectors.WebsocketConnector;
 
 namespace Triggernometry.Forms
 {
@@ -1575,6 +1577,45 @@ namespace Triggernometry.Forms
             );
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ButtplugClient bpcl = plug.bpcl;
+            if (null == bpcl)
+            {
+                var bpwsconn = new ButtplugWebsocketConnector(new Uri(ButtplugClientServerAddressTextBox.Text));
+                bpcl = new ButtplugClient("Triggernometry Buttplug Client", bpwsconn);
+                plug.bpcl = bpcl;
+            }
+            if (!bpcl.Connected)
+            {
+                ButtplugClientConnectButton.Text = "Connecting...";
+                ButtplugClientConnectButton.Enabled = false;
+                ButtplugClientServerAddressTextBox.Enabled = false;
+                var connect = Task.Run(() => bpcl.ConnectAsync());
+                connect.Wait();
+                if(bpcl.Connected)
+                {
+                    ButtplugClientConnectButton.Text = "Disconnect";
+                    ButtplugClientConnectButton.Enabled = true;
+                    ButtplugClientServerAddressTextBox.Enabled = false;
+                }
+            }
+            else
+            {
+                ButtplugClientConnectButton.Text = "Disconnecting...";
+                ButtplugClientConnectButton.Enabled = false;
+                ButtplugClientServerAddressTextBox.Enabled = false;
+                var disco = Task.Run( () => bpcl.DisconnectAsync());
+                disco.Wait();
+                if (!bpcl.Connected)
+                {
+                    ButtplugClientConnectButton.Text = "Connect";
+                    ButtplugClientConnectButton.Enabled = true;
+                    ButtplugClientServerAddressTextBox.Enabled = true;
+                }
+            }
+
+        }
     }
 
 }
