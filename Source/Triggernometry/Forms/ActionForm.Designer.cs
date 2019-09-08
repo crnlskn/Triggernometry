@@ -3613,6 +3613,7 @@
             this.ButtplugDeviceListBox.Name = "ButtplugDeviceListBox";
             this.ButtplugDeviceListBox.Size = new System.Drawing.Size(120, 95);
             this.ButtplugDeviceListBox.TabIndex = 3;
+            this.ButtplugDeviceListBox.SelectedIndexChanged += new System.EventHandler(this.ButtplugDeviceListBox_SelectedIndexChanged);
             // 
             // ButtplugClientConnectButton
             // 

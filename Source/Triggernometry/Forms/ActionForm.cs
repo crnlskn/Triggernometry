@@ -64,7 +64,7 @@ namespace Triggernometry.Forms
             btnTest.ContextMenuStrip = new ContextMenuStrip();
             ToolStripItem tsi = btnTest.ContextMenuStrip.Items.Add(I18n.Translate("internal/ActionForm/acttestplaceholder", "Test action with placeholder values"));
             tsi.Image = btnTest.Image;
-            tsi.Click += Tsi_Click1;            
+            tsi.Click += Tsi_Click1;
             tsi = btnTest.ContextMenuStrip.Items.Add(I18n.Translate("internal/ActionForm/acttestlive", "Test action with live values"));
             tsi.Image = btnTest.Image;
             tsi.Click += Tsi_Click2;
@@ -220,8 +220,8 @@ namespace Triggernometry.Forms
                 chkSpeechMyOutput.Checked = false;
                 expProcessName.Expression = "";
                 expProcessParameters.Expression = "";
-				expProcessWorkingDir.Expression = "";
-				cbxProcessWindowStyle.SelectedIndex = 0;
+                expProcessWorkingDir.Expression = "";
+                cbxProcessWindowStyle.SelectedIndex = 0;
                 expKeypresses.Expression = "";
                 cbxExecScriptLang.SelectedIndex = 0;
                 expExecScriptCode.Expression = "";
@@ -239,7 +239,7 @@ namespace Triggernometry.Forms
                 cbxLvarOperation.SelectedIndex = 0;
                 cbxTriggerOp.SelectedIndex = 0;
                 expTriggerText.Expression = "";
-                expTriggerZone.Expression = "";                
+                expTriggerZone.Expression = "";
                 cbxAuraOp.SelectedIndex = 0;
                 cbxAuraDisplay.SelectedIndex = 0;
                 expAuraName.Expression = "";
@@ -334,8 +334,8 @@ namespace Triggernometry.Forms
                 chkSpeechMyOutput.Checked = a._PlaySpeechMyself;
                 expProcessName.Expression = a.LaunchProcessPathExpression;
                 expProcessParameters.Expression = a.LaunchProcessCmdlineExpression;
-				expProcessWorkingDir.Expression = a.LaunchProcessWorkingDirExpression;
-				cbxProcessWindowStyle.SelectedIndex = (int)a.LaunchProcessWindowStyle;
+                expProcessWorkingDir.Expression = a.LaunchProcessWorkingDirExpression;
+                cbxProcessWindowStyle.SelectedIndex = (int)a.LaunchProcessWindowStyle;
                 expKeypresses.Expression = a.KeyPressExpression;
                 cbxExecScriptLang.SelectedIndex = (int)a.ExecScriptType;
                 expExecScriptCode.Expression = a.ExecScriptExpression;
@@ -518,7 +518,8 @@ namespace Triggernometry.Forms
         internal void fillButtplugFromAction(Action a)
         {
             VibrateCmdCheckBox.Checked = a.ButtplugType.HasFlag(Action.ButtplugTypesEnum.Vibrate);
-            if (a.ButtplugSettings.Keys.Contains("VibrateIntensity")) {
+            if (a.ButtplugSettings.Keys.Contains("VibrateIntensity"))
+            {
                 IntensityTextBox.Text = a.ButtplugSettings["VibrateIntensity"].ToString();
             }
             StopCmdCheckBox.Checked = a.ButtplugSettings.Keys.Contains("off");
@@ -545,9 +546,9 @@ namespace Triggernometry.Forms
             a._PlaySpeechMyself = chkSpeechMyOutput.Checked;
             a.LaunchProcessPathExpression = expProcessName.Expression;
             a.LaunchProcessCmdlineExpression = expProcessParameters.Expression;
-			a.LaunchProcessWorkingDirExpression = expProcessWorkingDir.Expression;
+            a.LaunchProcessWorkingDirExpression = expProcessWorkingDir.Expression;
             a.DebugLevel = (Plugin.DebugLevelEnum)cbxLoggingLevel.SelectedIndex;
-			a.LaunchProcessWindowStyle = (System.Diagnostics.ProcessWindowStyle)cbxProcessWindowStyle.SelectedIndex;
+            a.LaunchProcessWindowStyle = (System.Diagnostics.ProcessWindowStyle)cbxProcessWindowStyle.SelectedIndex;
             a.KeyPressExpression = expKeypresses.Expression;
             a.ExecScriptType = (Action.ScriptTypeEnum)cbxExecScriptLang.SelectedIndex;
             a.ExecScriptExpression = expExecScriptCode.Expression;
@@ -569,7 +570,7 @@ namespace Triggernometry.Forms
                 a.TriggerId = ((Trigger)tn.Tag).Id;
             }
             else
-            { 
+            {
                 a.TriggerId = Guid.Empty;
             }
             a.TriggerOp = (Action.TriggerOpEnum)cbxTriggerOp.SelectedIndex;
@@ -712,22 +713,22 @@ namespace Triggernometry.Forms
                             | (LinearCmdCheckBox.Checked ? Action.ButtplugTypesEnum.Linear : 0);
             a.ButtplugSettings = new Dictionary<string, double>();
             a.ButtplugSettings.Add("VibrateIntensity", Double.Parse(IntensityTextBox.Text ?? "0"));
-            a.ButtplugSettings.Add("Stop", StopCmdCheckBox.Checked ? 1 : 0);
+            a.ButtplugSettings.Add("off", StopCmdCheckBox.Checked ? 1 : 0);
         }
 
         private void TestAction(bool liveValues)
-		{
-			Action a = new Action();
-			Context ctx = new Context();
+        {
+            Action a = new Action();
+            Context ctx = new Context();
             ctx.plug = plug;
-			ctx.testmode = (liveValues == false);
+            ctx.testmode = (liveValues == false);
             ctx.trig = null;
             ctx.soundhook = plug.SoundPlaybackSmart;
             ctx.ttshook = plug.TtsPlaybackSmart;
             SettingsToAction(a);
             ctx.triggered = DateTime.UtcNow;
-            a.Execute(ctx);		
-		}
+            a.Execute(ctx);
+        }
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -749,7 +750,7 @@ namespace Triggernometry.Forms
                     break;
             }
             expVariableName.Enabled = (cbxVariableOp.SelectedIndex != 3);
-            expVariableExpression.Enabled = (cbxVariableOp.SelectedIndex == 1 || cbxVariableOp.SelectedIndex == 2);            
+            expVariableExpression.Enabled = (cbxVariableOp.SelectedIndex == 1 || cbxVariableOp.SelectedIndex == 2);
         }
 
         private void cbxTriggerOp_SelectedIndexChanged(object sender, EventArgs e)
@@ -837,7 +838,7 @@ namespace Triggernometry.Forms
             expAuraTTLTick.Enabled = (cbxAuraOp.SelectedIndex == 0);
             btnAuraGuide.Enabled = (cbxAuraOp.SelectedIndex == 0);
             expAuraName.Enabled = (cbxAuraOp.SelectedIndex != 2);
-            btnHide.Enabled = (cbxAuraOp.SelectedIndex != 2);            
+            btnHide.Enabled = (cbxAuraOp.SelectedIndex != 2);
         }
 
         private void expExecutionDelay_Load(object sender, EventArgs e)
@@ -872,7 +873,7 @@ namespace Triggernometry.Forms
             Context ctx = new Context();
             ctx.plug = plug;
             ctx.testmode = false;
-            ctx.trig = null;            
+            ctx.trig = null;
             ctx.triggered = DateTime.UtcNow;
             string fn = ctx.EvaluateStringExpression(null, null, expAuraImage.Expression);
             Bitmap ix;
@@ -904,7 +905,7 @@ namespace Triggernometry.Forms
                     case 3:
                         adf.SetImageMode(PictureBoxSizeMode.Zoom);
                         break;
-                }                
+                }
                 if (
                     (expAuraXIni.Expression.Length == 0)
                     ||
@@ -1135,7 +1136,7 @@ namespace Triggernometry.Forms
                 }
                 else
                 {
-                    btnHide.BackColor = SystemColors.Control;                    
+                    btnHide.BackColor = SystemColors.Control;
                 }
             }
             if (ex >= 25)
@@ -1143,7 +1144,7 @@ namespace Triggernometry.Forms
                 btnHide.BackColor = SystemColors.Control;
                 timer1.Stop();
             }
-            timer1.Tag = ex;            
+            timer1.Tag = ex;
         }
 
         private void trvFolder_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
@@ -1577,7 +1578,7 @@ namespace Triggernometry.Forms
             expKeypress.Enabled = (cbxKeypressMethod.SelectedIndex == 1);
             lblKeypressInfo.Enabled = (cbxKeypressMethod.SelectedIndex == 1);
             txtKeyCodesLink.Enabled = (cbxKeypressMethod.SelectedIndex == 1);
-            btnKeycodesLink.Enabled = (cbxKeypressMethod.SelectedIndex == 1);            
+            btnKeycodesLink.Enabled = (cbxKeypressMethod.SelectedIndex == 1);
         }
 
         private void btnKeycodesLink_Click(object sender, EventArgs e)
@@ -1595,7 +1596,7 @@ namespace Triggernometry.Forms
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            // XXX: is "we cancel the even but stay connected" ok?
+            // XXX: is "we cancel the event but stay connected" ok?
             ButtplugClient bpcl = plug.bpcl;
             if (null == bpcl)
             {
@@ -1607,49 +1608,100 @@ namespace Triggernometry.Forms
             if (!bpcl.Connected)
             {
                 ButtplugClientConnectButton.Text = "Connecting...";
-                ButtplugClientConnectButton.Enabled = false;
-                ButtplugClientServerAddressTextBox.Enabled = false;
                 var connect = Task.Run(() => bpcl.ConnectAsync(plug.GetCancellationToken()));
-                // FIXME: don't block the UI thread, disable controls instead
-                connect.Wait();
-                if(bpcl.Connected)
+                this.Enabled = false;
+                try
                 {
-                    ButtplugClientConnectButton.Text = "Disconnect";
-                    ButtplugClientConnectButton.Enabled = true;
-                    ButtplugClientServerAddressTextBox.Enabled = false;
-                    bpcl.DeviceAdded += delegate {
-                        plug.ButtplugDevices = new BindingList<String>(bpcl.Devices.Select(a => a.Name).ToList());
-                        ButtplugDeviceListBox.DataSource = plug.ButtplugDevices;
-                    };
-                    bpcl.DeviceRemoved += delegate { plug.ButtplugDevices = new BindingList<String>(bpcl.Devices.Select(a => a.Name).ToList()); };                  
+                    connect.Wait();
                 }
-            }
-            else
-            {
-                ButtplugClientConnectButton.Text = "Disconnecting...";
-                ButtplugClientConnectButton.Enabled = false;
-                ButtplugClientServerAddressTextBox.Enabled = false;
-                var disco = Task.Run( () => bpcl.DisconnectAsync());
-                // FIXME: don't block the UI thread, disable controls instead
-                disco.Wait();
-                if (!bpcl.Connected)
+                catch (Exception eee)
+                {
+                    MessageBox.Show(
+                        String.Format("Can't connect to server at {0}.\n" +
+                        "Is a buttplug websocket server listening at that address?\n" +
+                        "{1}",
+                            ButtplugClientServerAddressTextBox.Text, eee.Message),
+                        "Connection error",
+                        MessageBoxButtons.OK);
+                }
+                this.Enabled = true;
+                if (bpcl.Connected)
+                {
+                    plug.ButtplugDevices = new BindingList<String>(plug.bpcl.Devices.Select(a => a.Name).ToList());
+                    ButtplugDeviceListBox.DataSource = plug.ButtplugDevices;
+                    ButtplugClientConnectButton.Text = "Disconnect";
+                    ButtplugClientServerAddressTextBox.Enabled = false;
+                    bpcl.DeviceAdded += Bpcl_DeviceAdded;
+                    bpcl.DeviceRemoved += Bpcl_DeviceRemoved;
+                    bpcl.ServerDisconnect += Bpcl_ServerDisconnect;
+                }
+                else
                 {
                     ButtplugClientConnectButton.Text = "Connect";
-                    ButtplugClientConnectButton.Enabled = true;
                     ButtplugClientServerAddressTextBox.Enabled = true;
-                    if (!plug.ButtplugDeviceScanTask.IsCompleted)
+                    if (null != plug.ButtplugDeviceScanTask && !plug.ButtplugDeviceScanTask.IsCompleted)
                     {
                         plug.ButtplugDeviceScanTask.Wait();
                         plug.ButtplugDeviceScanTask.Dispose();
                     }
                 }
             }
+            else
+            {
+                ButtplugClientConnectButton.Text = "Disconnecting...";
+                bpcl.DeviceAdded -= Bpcl_DeviceAdded;
+                bpcl.DeviceRemoved -= Bpcl_DeviceRemoved;
+                bpcl.ServerDisconnect -= Bpcl_ServerDisconnect;
+                if (null != plug.ButtplugDeviceScanTask && !plug.ButtplugDeviceScanTask.IsCompleted)
+                {
+                    plug.ButtplugDeviceScanTask.Wait();
+                    plug.ButtplugDeviceScanTask.Dispose();
+                }
+                var disco = Task.Run(() => bpcl.DisconnectAsync());
+                // FIXME: don't block the UI thread, disable controls instead
+                // on the other hand this is "disconnect"..? hm
+                disco.Wait();
+                if (!bpcl.Connected)
+                {
+                    ButtplugClientConnectButton.Text = "Connect";
+                    ButtplugClientConnectButton.Enabled = true;
+                    ButtplugClientServerAddressTextBox.Enabled = true;
 
+                    plug.ButtplugDevices = new BindingList<String>();
+                    ButtplugDeviceListBox.DataSource = plug.ButtplugDevices;
+                }
+            }
+
+        }
+
+        private void Bpcl_ServerDisconnect(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+                String.Format("Server unexpectedly disconnected.\n" +
+                    "Please verify your connectivity and the status of the server at {0}.\n",
+                    ButtplugClientServerAddressTextBox.Text),
+                "Connection error",
+                MessageBoxButtons.OK);
+
+            ButtplugClientConnectButton.Text = "Connect";
+        }
+
+        // FIXME: I really shouldn't be creating lists that casually I think...
+        private void Bpcl_DeviceRemoved(object sender, DeviceRemovedEventArgs e)
+        {
+            plug.ButtplugDevices = new BindingList<String>(plug.bpcl.Devices.Select(a => a.Name).ToList());
+            ButtplugDeviceListBox.DataSource = plug.ButtplugDevices;
+        }
+
+        private void Bpcl_DeviceAdded(object sender, DeviceAddedEventArgs e)
+        {
+            plug.ButtplugDevices = new BindingList<String>(plug.bpcl.Devices.Select(a => a.Name).ToList());
+            ButtplugDeviceListBox.DataSource = plug.ButtplugDevices;
         }
 
         private void VibrateCmdCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            if(((CheckBox)sender).Checked)
+            if (((CheckBox)sender).Checked)
             {
                 IntensityLabel.Visible = true;
                 IntensityTextBox.Visible = true;
@@ -1664,16 +1716,27 @@ namespace Triggernometry.Forms
         private void ButtplugScanButton_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
-            if(btn.Text.Equals("Scan"))
+            if (btn.Text.Equals("Scan"))
             {
 
                 plug.ButtplugDeviceScanTask = plug.bpcl.StartScanningAsync(plug.GetCancellationToken());
                 btn.Text = "Stop";
             }
-            else if(btn.Text.Equals("Stop")) {
+            else if (btn.Text.Equals("Stop"))
+            {
                 plug.ButtplugDeviceScanTask = plug.bpcl.StopScanningAsync();
                 btn.Text = "Scan";
             }
+        }
+
+        private void ButtplugDeviceListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var devname = ((ListBox)sender).Text;
+            ButtplugClientDevice dev = plug.bpcl.Devices.First(d => d.Name.Equals(devname));
+            // FIXME: yee sleep
+            dev.SendVibrateCmd(0.5);
+            System.Threading.Thread.Sleep(millisecondsTimeout: 100);
+            dev.SendVibrateCmd(0.0);
         }
     }
 
